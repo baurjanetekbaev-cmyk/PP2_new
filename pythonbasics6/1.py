@@ -1,67 +1,40 @@
-#"r" - Read - Default value. Opens a file for reading, error if the file does not exist
-#"a" - Append - Opens a file for appending, creates the file if it does not exist
-#"w" - Write - Opens a file for writing, creates the file if it does not exist
-#"x" - Create - Creates the specified file, returns an error if the file exists
-#"t" - Text - Default value. Text mode
-#"b" - Binary - Binary mode (e.g. images)
+#1.File handing exercises
+with open("practice_6/text.txt","w") as f:
+    f.write("Www")
+    f.write("Python")
 
-#1
-f=open("pythonbasics6/demofile.txt")
-print(f.read())
-
-#2
-with open("pythonbasics6/demofile.txt") as f:
+with open("practice_6/text.txt","r") as f:
     print(f.read())
 
-#3 Close Files
-f=open("pythonbasics6/demofile.txt")
-print(f.readline())
-f.close()
+with open("practice_6/text.txt","a") as f:
+    f.write("new line")
 
-#4 Read Only Parts of the File
-with open("pythonbasics6/demofile.txt") as f:
-    print(f.read(5))
-
-#5 Read Lines
-with open("pythonbasics6/demofile.txt") as f:
-    print(f.readline())
-
-#6
-with open("pythonbasics6/demofile.txt") as f:
-    print(f.readline())
-    print(f.readline())
-
-#7
-with open("pythonbasics6/demofile.txt") as f:
-    for x in f:
-        print(x)
-
-
-#"a" - Append - will append to the end of the file
-#"w" - Write - will overwrite any existing content
-with open("pythonbasics6/demofile.txt","a") as f:
-    f.write("Now the file has moore content!")
-with open("pythonbasics6/demofile.txt") as f:
-    print(f.read())
-
-#1
-with open("pythonbasics6/demofile.txt","w") as f:
-    f.write("Woops! I have deleted the content")
-with open("pythonbasics6/demofile.txt") as f:
-    print(f.read())
-
-#"x" - Create - will create a file, returns an error if the file exists
-#"a" - Append - will create a file if the specified file does not exists
-#"w" - Write - will create a file if the specified file does not exists
-f=open("pythonbasics6/myfile.txt","x")
-
-#DELETE FILE
-
-
-#2
+import shutil
 import os
-if os.path.exists("pythonbasics6/demofile.txt"):
-    os.remove("pythonbasics6/demofile.txt")
-else:
-    print("The file does not exist")
+shutil.copy("practice_6/text.txt","practice_6/copy.txt")
+if os.path.exists("practice_6/copy.txt"):
+    os.remove("practice_6/copy.txt")
 
+#2.Directory exercises
+#import os
+#os.mkdir("my_folder")
+#print(os.listdir())
+#print(os.getcwd())
+
+import shutil
+shutil.move("text.txt","my_folder/text.txt")
+
+#3 Built-in functions
+from functools import reduce
+nums=[5,9,6,1]
+print(list(map(lambda x: x**2,nums))) #map
+print(list(filter(lambda x: x%2==0,nums))) #filter
+print(reduce(lambda x,y: x+y,nums)) #reduce
+
+
+names=["Aya","Za","Lina"]
+nm=["12","13","14"]
+for i,name in enumerate(names):
+    print(i,name)
+for n,num in zip(names,nm):
+    print(n,nm)
