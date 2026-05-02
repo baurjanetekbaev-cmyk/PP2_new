@@ -1,1 +1,0 @@
-print(*[f"{i}:{w}" for i, w in enumerate(input().split())])
